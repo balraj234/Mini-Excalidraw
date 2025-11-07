@@ -6,7 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
-const helmet = require('helmet');
+
 
 const pagesRoute = require('./routes/pages');
 const shapesRoute = require('./routes/shapes');
@@ -14,7 +14,7 @@ const shapesRoute = require('./routes/shapes');
 const app = express();
 
 // ---------- Basic middleware ----------
-app.use(helmet()); // basic security headers
+
 app.use(cors());
 app.use(express.json({ limit: '8mb' }));
 app.use(morgan('dev'));
