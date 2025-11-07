@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const base = import.meta.env.VITE_API_URL || 'https://mini-excalidraw-backend.onrender.com/api';
+const base = import.meta.env.VITE_API_URL || 'https://mini-excalidraw-backend.onrender.com';
 // const raw = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 // const trimmed = raw.replace(/\/+$/,'');    // remove trailing slash if any
 // const base = trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
