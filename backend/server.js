@@ -12,8 +12,17 @@ const shapesRoute = require('./routes/shapes');
 
 const app = express();
 
+// ✅ CORS Configuration (important)
+app.use(cors({
+  origin: [
+    'http://localhost:5173', // local Vite dev
+    'https://mini-excalidraw-frontend.onrender.com' // deployed frontend
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 // Middleware
-app.use(cors());
 app.use(express.json({ limit: '5mb' }));
 app.use(morgan('dev'));
 
@@ -25,16 +34,16 @@ app.use('/api/shapes', shapesRoute);
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;
 
-// Debug log (optional - helps verify .env is loaded)
-console.log(" MONGO_URI:", MONGO_URI ? "Loaded successfully" : " Not found in .env");
+// Debug log (to verify .env works)
+console.log("MONGO_URI:", MONGO_URI ? "Loaded successfully" : "Not found in .env");
 
 // MongoDB Connection
 mongoose.connect(MONGO_URI)
   .then(() => {
-    console.log('MongoDB connected successfully');
-    app.listen(PORT, () => console.log(` Server running on http://localhost:${PORT}`));
+    console.log('✅ MongoDB connected successfully');
+    app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
   })
   .catch((err) => {
-    console.error(' MongoDB connection error:', err.message);
+    console.error('❌ MongoDB connection error:', err.message);
     process.exit(1);
   });
