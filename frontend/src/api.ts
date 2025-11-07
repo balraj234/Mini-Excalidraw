@@ -8,9 +8,9 @@ const api = axios.create({ baseURL: base });
 
 export const PagesAPI = {
   list: () => api.get('/api/pages').then(r => r.data),
-  create: (name: string) => api.post('/api/pages', { name }).then(r => r.data),
-  delete: (id: string) => api.delete(`/api/pages/${id}`).then(r => r.data),
-  getShapes: (pageId: string) => api.get(`/api/pages/${pageId}/shapes`).then(r => r.data),
+  create: (name: string) => api.post('/pages', { name }).then(r => r.data),
+  delete: (id: string) => api.delete(`/pages/${id}`).then(r => r.data),
+  getShapes: (pageId: string) => api.get(`/pages/${pageId}/shapes`).then(r => r.data),
 
   // renaming or updating a page
   update: (id: string, patch: { name: string }) => 
