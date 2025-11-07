@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const base = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+const base = import.meta.env.VITE_API_URL || 'https://mini-excalidraw-backend.onrender.com';
 const api = axios.create({ baseURL: base });
 
 export const PagesAPI = {
